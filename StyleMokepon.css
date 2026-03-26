@@ -1,0 +1,243 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+
+body {
+	font-family: "Spicy Rice", serif;
+	background: radial-gradient(#E2B59A,#AEB784, #41431B);
+	heighth: 3000px;
+	border: 1px solid crimson;
+}
+
+#Seleccionar-Mascota {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+		
+}
+	
+.titulo {
+	color: #5C3830;
+	heighth: 100vh;
+	font-family: "Spicy Rice", serif;
+  	font-style: normal;
+	font-size: 54px;
+	width: 300px;
+	height: 50px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding-bottom:0px;
+	-webkit-text-stroke: 0.01px white;
+	margin:0px;
+}
+
+.subtitulo {
+	 color: #5C3830;
+	font-style: normal;
+	font-size: 28px;
+	padding-top:0px;
+	-webkit-text-stroke: 0.01px white;
+	margin-bottom: 50px
+}
+	
+
+.tarjeta-de-mokepon {
+	width: 205px;
+	heighth: 70px;
+    background: #FFE1AF;
+    padding: 10px;
+	padding-bottom: 0px;
+	border-left: 1px solid #B77466;
+	border-top: 1px solid #B77466;
+	border-right: 1px solid #B77466;
+	border-bottom: 1px solid #B77466;
+    box-sizing: border-box;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	display: flex;
+	margin: 30px;
+}
+
+.tarjeta-de-mokepon img {
+	height: 130px;
+	flex-direction: row;
+	grid-row-gap: 20px;
+}
+
+.tarjetas {
+	display: flex;
+	padding-bottom: 100px;
+}
+
+#botonMascota {
+	width: 180px;
+	height: 50px;
+	heighth: 100vh;
+	background-color: #8E977D;
+	border-radius: 20px;
+	font-family: "star jedi", "serif";
+	font-size: 20px;
+	align-content: center;
+		align-items: center;
+	margin-bottom: 100vh;
+}
+
+input {
+	display: none;
+}
+
+input:checked + label {
+	background-color: greenyellow;
+}
+
+#boton-fuego {
+	color:darkred ;
+}
+
+#boton-agua {
+	color: aqua;
+	align-items: center;
+}
+
+#boton-tierra {
+	color:goldenrod
+}
+
+
+#Seleccionar-Ataque {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.boton-de-ataque {
+	background: #8A7650;
+	padding: 10px;
+	padding-bottom: 20px;
+	border-left: 7px solid #B77466;
+	border-top: 1px solid #B77466;
+	border-right: 1px solid #B77466;
+	border-bottom: 2px solid #B77466;
+    box-sizing: border-box;
+	width: 200px;
+		height: 80px;
+	border-radius: 20px;
+	font-family: "Spicy Rice", serif;
+	font-size: 30px;
+	align-items: flex-start;
+	align-content: center;
+	margin-bottom: 100px;
+	margin-left: 60px;
+	
+}
+
+.boton-de-ataque img {
+	display: flex;
+	flex-direction: column;
+	align-content: flex-end;
+	align-items: flex-end;
+	height: 70px;
+	width: 70px;
+	margin-top: 5px;
+}
+
+#textoNumeroCombate {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+#resultado {
+	width: 300px;
+    height: 50px;
+    background: #8E977D;
+    align-content: center;
+    display: flex;
+	flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px, solid, #8A7650;
+    box-shadow: -5px 5px 10px #8A7650;
+}
+
+#tu {
+	margin: 0px
+}
+
+#vidasJugadorPrevio {
+	margin: 1px;
+}
+
+#vidasJugadorPost {
+	margin-top: 1px;
+	border-bottom: 2px solid crimson; 
+}
+
+#mascota-jugador {
+	margin: 0px;
+}
+
+#rival {
+	margin: 0px
+}
+
+#vidasEnemigoPrevio {
+	margin: 1px;
+}
+
+
+#vidasRivalPost {
+	margin-top: 1px;
+	border-bottom: 2px solid crimson;
+}
+
+#mascota-enemigo {
+	margin:0px;
+}
+
+#Reinicio {
+	background: #AEB784;
+	border: 1px, solid, #41431B;
+	width: 150px;
+	height: 50px;
+	border-radius: 20px;
+	color: #41431B;
+	box-shadow: -5px 5px 10px #8A7650;
+	margin-left: 70px;
+	margin-bottom: 30px;
+}
+
+.ataques {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	text-align: center;
+}
+
+#vidas-jugador, #vidas-enemigo {
+	font-size: 52px;
+	margin-bottom: 0;
+	margin-top: 0px;
+}
+
+#Mensajes2 {
+	margin-left: 70px;
+	font-size: 50px;
+}
+
+
+@media (max-width: 720px) {
+	.tarjetas {
+		flex-direction: column;
+	}
+	.boton-de-ataque {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
