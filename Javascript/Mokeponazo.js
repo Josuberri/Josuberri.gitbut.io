@@ -7,9 +7,6 @@ const sectionSeleccionarAtaque = document.getElementById('Seleccionar-Ataque')
 const sectionReiniciar = document.getElementById('Reiniciar')
 const sectionMensajes2 = document.getElementById('Mensajes2')
 const botonMascotaJugador = document.getElementById('botonMascota')
-const botonFuego = document.getElementById('boton-fuego')
-const botonAgua = document.getElementById('boton-agua')
-const botonTierra = document.getElementById('boton-tierra')
 const botonReiniciar =  document.getElementById('Reinicio')
 //Hasta aqu√≠ era IniciarJuego. Abrimos para la funci√≥n seleccionarMascota. Hemos tenido que quitar 'Seleccionar-Ataque', que se repet√≠a
 const sectionSeleccionarMascota = document.getElementById('Seleccionar-Mascota')
@@ -52,6 +49,10 @@ let ataquesMokepon
 let numeroCombate = 0;
 let vidasJugador = 3; 
 let vidasEnemigo = 3;
+//Creamos los botones de tierra fuego y agua con las que van a atacar cada una de las mascotas y que ser·n utilizadas en la funciÛn mostrarAtaques:
+let botonFuego
+let botonAgua
+let botonTierra
 //creamos ahora (ya en clase avanzada, posterior a todas las secciones y funciones que empezamos creando) clases generales y objetos, que entiendo van a sustituir a las creadas en HTML:
 class Mokepon {
 	constructor(nombre, foto, vida) {
@@ -152,9 +153,6 @@ function iniciarJuego(){
 	)
 	
 	botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
-	botonFuego.addEventListener('click', ataqueFuego)
-	botonAgua.addEventListener('click', ataqueAgua)
-	botonTierra.addEventListener('click', ataqueTierra)
 	botonReiniciar.addEventListener('click', reiniciarJuego)
 }
 function seleccionarMascotaJugador(){
@@ -222,6 +220,14 @@ function mostrarAtaques(ataques) {
 		`
 		contenedorAtaques.innerHTML += ataquesMokepon
 	})
+	
+		botonFuego = document.getElementById('boton-fuego')
+		botonAgua = document.getElementById('boton-agua')
+		botonTierra = document.getElementById('boton-tierra')
+	
+		botonFuego.addEventListener('click', ataqueFuego)
+		botonAgua.addEventListener('click', ataqueAgua)
+		botonTierra.addEventListener('click', ataqueTierra)
 }
 
 
