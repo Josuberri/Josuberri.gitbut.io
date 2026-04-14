@@ -53,6 +53,8 @@ let vidasEnemigo = 3;
 let botonFuego
 let botonAgua
 let botonTierra
+//Creamos la variable botones, para que puedan funcionar los botones de tierra, aguan y fuego de cada una de las mascotas, que al individualizarlas por mascota, sólo funcionaba la primera (en caso de que tuviera ataques repetidos) cuando se crearon:
+let botones = []
 //creamos ahora (ya en clase avanzada, posterior a todas las secciones y funciones que empezamos creando) clases generales y objetos, que entiendo van a sustituir a las creadas en HTML:
 class Mokepon {
 	constructor(nombre, foto, vida) {
@@ -195,6 +197,15 @@ function seleccionarMascotaJugador(){
 		seleccionarMascotaEnemigo()
 	}
 
+
+function seleccionarMascotaEnemigo() {
+	let mascotaAleatorio = aleatorio(0, mokepones.length -1)
+	
+	spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
+	alert("Tu rival elige " + mokepones[mascotaAleatorio].nombre)
+	secuenciaAtaque()
+} 
+
 function extraerAtaques(mascotaJugador) {
 	let ataques
 	//Introducimos la estructura 'for', muy parecida a forEach, pero con variables numéricas que permiten moverse por todos los arreglos hasta llegar al nombre/personaje que necesitamos (clase 53)
@@ -216,7 +227,7 @@ function extraerAtaques(mascotaJugador) {
 function mostrarAtaques(ataques) {
 	ataques.forEach((ataque) => {
 		ataquesMokepon = `
-		<button id = ${ataque.id} class = "boton-de-ataque"> ${ataque.nombre} </button>
+		<button id = ${ataque.id} class = "boton-de-ataque BAtaque"> ${ataque.nombre} </button>
 		`
 		contenedorAtaques.innerHTML += ataquesMokepon
 	})
@@ -224,19 +235,25 @@ function mostrarAtaques(ataques) {
 		botonFuego = document.getElementById('boton-fuego')
 		botonAgua = document.getElementById('boton-agua')
 		botonTierra = document.getElementById('boton-tierra')
+	//introducimos el concepto querySelectorAll: le decimos que seleccione TODOS los elementos de esa clase, en este caso botones. Lo hacemos a travñes de clase y no a través de Id porque sería una mala práctica, dicen.
+		botones = document.querySelectorAll('.BAtaque')
+		
 	
 		botonFuego.addEventListener('click', ataqueFuego)
 		botonAgua.addEventListener('click', ataqueAgua)
 		botonTierra.addEventListener('click', ataqueTierra)
 }
 
-
-function seleccionarMascotaEnemigo() {
-	let mascotaAleatorio = aleatorio(0, mokepones.length -1)
+function secuenciaAtaque() {
+	botones.forEach((boton) => {
+		boton.addEventListener('click', (e) => {
+			 console.log(e)
+		})
+	})
 	
-	spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
-	alert("Tu rival elige " + mokepones[mascotaAleatorio].nombre)
-} 
+}
+
+
 function ataqueFuego() {
 	ataqueJugador = 'FUEGO' 
 	alert("Has escogido atacar con " + ataqueJugador)
