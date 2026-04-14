@@ -1,4 +1,5 @@
   // JavaScript Document
+
 alert("Buenos dÃ­as. Hace una partidita de Mokepon?")
 
 //creamos estas variables para la funciÃ³n iniciar Juego. Las creamos como let y, como no van a variar, las denominamos const en vez de let.
@@ -26,6 +27,8 @@ const ataquesDelJugador = document.getElementById('ataquesDelJugador')
 const ataquesDelRival = document.getElementById('ataquesDelRival')
 //Esta constante la introducimos para sustituor el HTML que habÃ­amos creado para las Tarjetas de Mokepon
 const contenedorTarjetas = document.getElementById('contenedorTarjetas')
+//creamos la constante contenedorAtaques para resolver el ataque de cada mascota, en la función mostrarAtaques. Necesita crear una variable (más abajo); ataquesMokepon
+const contenedorAtaques = document.getElementById('contenedorAtaques')
 
 //Ahora la secciÃ³n CrearMensajesFInal. Botones fuego tierra y agua estarÃ­an repetidos, por lo que se excluyen. Lo mismo con section REiniciar y con la secciÃ³n Mensajes, es decir, todo estarÃ­a repetido.
 //De la secciÃ³n revisar Vidas: EstarÃ­a Mensajes2, que ya estÃ¡ escrito.
@@ -41,6 +44,11 @@ let inputCapipepo
 let inputLangostelvis 
 let inputTucapalma 
 let inputPaidos
+//mascotaJugador es una variable creada para permitir los ataques directos desde el mokepon. Es curioso que, al trasladar todas las órdenes a Javascript, no habñiamos definido el nombre de la mascota. Habíamos conseguido denominarla sólo a través de input. Esta mascotaJugador está vinculada a la función extraerAtaques, aunque la primera vez que se activa es incorporada a la función seleccionarMascotaJugador, igualándola al input correspondiente con su id. De hecho, la vemos en la funcion SeleccionarMascotaJugador en la última línea, vinculada al input:
+let mascotaJugador
+//creamos la variable ataquesMokepon para la función mostrarAtaques. Ordena los ataques de cada moquepon desde el arreglo mokepones:
+let ataquesMokepon
+// a continuación: los span con variables
 let numeroCombate = 0;
 let vidasJugador = 3; 
 let vidasEnemigo = 3;
@@ -156,31 +164,67 @@ function seleccionarMascotaJugador(){
 		if (inputRatigueya.checked) {
 			alert("Has seleccionado como mascota a Ratigueya")
 			spanMascotaJugador.innerHTML = inputRatigueya.id
+			mascotaJugador = inputRatigueya.id
 		}
 		else if (inputHipodoge.checked) {
 			alert("Has seleccionado como mascota a Hipodoge")	
 			spanMascotaJugador.innerHTML = inputHipodoge.id
+			mascotaJugador = inputHipodoge.id
 		}
 		else if (inputCapipepo.checked) {
 			alert("Has seleccionado como mascota a Capipepo")
 			spanMascotaJugador.innerHTML = inputCapipepo.id
+			mascotaJugador = inputCapipepo.id
 		}
 		else if (inputLangostelvis.checked) {
 			alert("Has seleccionado como mascota a Langostelvis")
 			spanMascotaJugador.innerHTML = inputLangostelvis.id
+			mascotaJugador = inputLangostelvis.id
 		}
 		else if (inputTucapalma.checked) {
 			alert("Has seleccionado como mascota a Tucapalma")
 			spanMascotaJugador.innerHTML = inputTucapalma.id
+			mascotaJugador = inputTucapalma.id
 		}
 		else if (inputPaidos.checked) {
 			alert("Has seleccionado como mascota a Paidos")
 			spanMascotaJugador.innerHTML = inputPaidos.id
+			mascotaJugador = inputPaidos.id
 		}
 		else {alert("Recuerda que tienes que seleccionar una mascota previamente")}
 	
+		extraerAtaques(mascotaJugador)
 		seleccionarMascotaEnemigo()
 	}
+
+function extraerAtaques(mascotaJugador) {
+	let ataques
+	//Introducimos la estructura 'for', muy parecida a forEach, pero con variables numéricas que permiten moverse por todos los arreglos hasta llegar al nombre/personaje que necesitamos (clase 53)
+	for (let i = 0; i < mokepones.length; i++) {
+	if (mascotaJugador === mokepones[i].nombre){
+	ataques = mokepones[i].ataques
+	}
+	}
+	// prefiero esta fórmula de forEach, que parece más precisa y ajustada, dada en los comentarios de clase 53
+	//mokepones.forEach((mokepon) => {
+	//if (mascotaJugador === mokepon.nombre) {
+	//	ataques=mokepon.ataques
+	//}
+//})
+	
+	mostrarAtaques(ataques)
+}
+
+function mostrarAtaques(ataques) {
+	ataques.forEach((ataque) => {
+		ataquesMokepon = `
+		<button id = ${ataque.id} class = "boton-de-ataque"> ${ataque.nombre} </button>
+		`
+		contenedorAtaques.innerHTML += ataquesMokepon
+	})
+}
+
+
 function seleccionarMascotaEnemigo() {
 	let mascotaAleatorio = aleatorio(0, mokepones.length -1)
 	
