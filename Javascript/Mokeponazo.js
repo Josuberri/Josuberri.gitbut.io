@@ -1,4 +1,4 @@
-  // JavaScript Document
+   // JavaScript Document
 
 alert("Buenos d√≠as. Hace una partidita de Mokepon?")
 
@@ -32,7 +32,7 @@ const contenedorAtaques = document.getElementById('contenedorAtaques')
 //Introducimos una variable para incorporar ARREGLOS, que ir√°n entre corchetes cuadrados. Permitir√° incorporar cuantos objetos (moquepones) queramos crear, para darles caracter√≠sticas individuales.
 let mokepones = []
 //A continuaci√≥n, las variables generales desde el principio y se mantienen en let, porque var√≠an en span
-let ataqueJugador 
+let ataqueJugador = []
 let ataqueEnemigo 
 let opcionDeMokepones
 let inputRatigueya 
@@ -230,52 +230,35 @@ function mostrarAtaques(ataques) {
 		<button id = ${ataque.id} class = "boton-de-ataque BAtaque"> ${ataque.nombre} </button>
 		`
 		contenedorAtaques.innerHTML += ataquesMokepon
-	})
+		})
 	
 		botonFuego = document.getElementById('boton-fuego')
 		botonAgua = document.getElementById('boton-agua')
 		botonTierra = document.getElementById('boton-tierra')
-	//introducimos el concepto querySelectorAll: le decimos que seleccione TODOS los elementos de esa clase, en este caso botones. Lo hacemos a travÒes de clase y no a travÈs de Id porque serÌa una mala pr·ctica, dicen.
+	//introducimos el concepto querySelectorAll: le decimos que seleccione TODOS los elementos de esa clase, en este caso botones. O sea un GetEmelementbyID, pero para toda una clase. Lo hacemos a travÒes de clase y no a travÈs de Id porque serÌa una mala pr·ctica, dicen.
 		botones = document.querySelectorAll('.BAtaque')
-		
 	
-		botonFuego.addEventListener('click', ataqueFuego)
-		botonAgua.addEventListener('click', ataqueAgua)
-		botonTierra.addEventListener('click', ataqueTierra)
-}
+	console.log(botones)
+	}
 
 function secuenciaAtaque() {
 	botones.forEach((boton) => {
 		boton.addEventListener('click', (e) => {
-			 console.log(e)
+			if (e.target.textContent === 'üî•') {
+				ataqueJugador.push('FUEGO')
+				boton.style.background = '#112f58'
+			}
+			else if (e.target.textContent === 'üíß') {
+				ataqueJugador.push('AGUA')
+				boton.style.background = '#112f58'
+			}
+			else {
+				ataqueJugador.push('TIERRA')
+				boton.style.background = '#112f58'
+			}
 		})
 	})
-	
-}
-
-
-function ataqueFuego() {
-	ataqueJugador = 'FUEGO' 
-	alert("Has escogido atacar con " + ataqueJugador)
-	ataqueAleatorioEnemigo()
-	numeroCombate++;
-    spanNumeroCombate.textContent = numeroCombate;
-}
-
-function ataqueAgua() {
-	ataqueJugador = 'AGUA'
-	alert("Has escogido atacar con " + ataqueJugador)
-	ataqueAleatorioEnemigo()
-	numeroCombate++;
-    spanNumeroCombate.textContent = numeroCombate;
-}
-
-function ataqueTierra() {
-	ataqueJugador = 'TIERRA'
-	alert("Has escogido atacar con " + ataqueJugador)
-	ataqueAleatorioEnemigo()
-	numeroCombate++;
-    spanNumeroCombate.textContent = numeroCombate;
+ataqueAleatorioEnemigo() 
 }
 
 function ataqueAleatorioEnemigo() {
